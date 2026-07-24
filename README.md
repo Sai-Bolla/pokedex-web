@@ -2,6 +2,8 @@
 
 A Streamlit-based Pokédex application that displays detailed Pokémon information from the live PokéAPI using a dynamic search feature with **theme colors that match each Pokémon**.
 
+link: https://pokedex-web-ncmo3htlha8hp28u5mrchx.streamlit.app/
+
 ## ✨ Features
 
 - **🔍 Aligned Search Bar** - Clean, professional search interface with aligned search button
