@@ -1,38 +1,3 @@
-# #will host the streamlit website here
-
-# #make sure to make a requirements.txt
-
-# import requests
-# from pprint import pprint
-# import time
-# import streamlit as st
-
-# import pandas as pd
-
-# def get_data(name):
-#   '''
-#   function takes in name of the pokemon as input, creates the url
-#   and returns the JSON data from the API call
-
-#   '''
-
-#   base_url = 'https://pokeapi.co/api/v2/pokemon/'
-#   name = name.lower()
-#   full_url = f'{base_url}{name}'
-
-#   try:
-#     response = requests.get(full_url)
-#     data = response.json()
-#     return data
-
-#   except:
-#     raise Exception('Data did not load properly')
-
-
-# st.title('Pokedex')
-# pokemon = st.text_input('Enter Pokemon Name')
-
-# st.write(get_data(pokemon))
 import streamlit as st
 import json
 import pandas as pd
@@ -231,15 +196,13 @@ if view_mode == "Overview":
     with col1:
         st.subheader("Profile Image")
         try:
-            
+            img_url = pokemon_data["sprites"]["front_default"]
+            st.image(img_url, use_container_width=True)
             
             # Shiny variant toggle
             if st.checkbox("Show Shiny Variant"):
                 shiny_url = pokemon_data["sprites"]["front_shiny"]
                 st.image(shiny_url, use_container_width=True, caption="Shiny Form")
-            else:
-              img_url = pokemon_data["sprites"]["front_default"]
-              st.image(img_url, use_container_width=True)
         except Exception as e:
             st.warning(f"Could not load image: {e}")
     
@@ -250,11 +213,11 @@ if view_mode == "Overview":
         # Basic Info
         col_info1, col_info2 = st.columns(2)
         with col_info1:
-            st.metric("Height", f"{pokemon_data['height']*10} cm")
+            st.metric("Height", f"{pokemon_data['height']} dm")
             st.metric("Base Experience", pokemon_data['base_experience'])
         
         with col_info2:
-            st.metric("Weight", f"{pokemon_data['weight']/10} kg")
+            st.metric("Weight", f"{pokemon_data['weight']} hg")
         
         # Type(s)
         st.subheader("Type(s)")
